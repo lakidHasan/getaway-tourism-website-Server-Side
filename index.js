@@ -52,7 +52,13 @@ async function run(){
         console.log(result);
         res.json(result);
     });
-
+    //   Delete Api 
+    app.delete('/offer/:id', async(req, res) =>{
+        const id = req.params.id;
+        const query = {_id:ObjectId(id)}
+        const result = await offersCollection.deleteOne(query);
+        res.json(result);
+    })
     }
     finally{
         // await client.close()
